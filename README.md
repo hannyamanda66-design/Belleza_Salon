@@ -44,6 +44,12 @@ docker compose down -v     (stop + hapus data DB)
 ## Troubleshooting
 - Table 'Customer' doesn't exist: MySQL Linux case-sensitive. Sudah diatasi dengan lower_case_table_names=1. Jalankan docker compose down -v lalu up lagi.
 - Port 8080 bentrok: ubah APP_PORT di .env.
+
+## Cara Kerja
+- Service app terhubung ke database lewat nama service `db`, bukan `localhost`.
+- Service app baru jalan setelah db berstatus healthy (healthcheck).
+- Data MySQL disimpan di volume `db-data`, jadi tidak hilang saat container di-restart.
+- Opsi `lower_case_table_names=1` dipakai karena MySQL di Linux membedakan huruf besar/kecil pada nama tabel.
 - Matikan XAMPP (Apache/MySQL) saat menjalankan Docker.
 - Tabel kosong: file db/belleza_salon.sql hanya di-import saat volume baru dibuat; pakai docker compose down -v.
 
