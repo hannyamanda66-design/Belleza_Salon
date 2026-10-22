@@ -1,12 +1,13 @@
 <?php
-$host = "localhost";
+$host = "db";
 $user = "root";
-$pass = "";
-$db   = "belleza_salon";
+$pass = "secretpassword";
+$db   = "belleza_db";
 
-$conn = mysqli_connect($host, $user, $pass, $db);
+$koneksi = mysqli_connect($host, $user, $pass, $db);
+$conn    = $koneksi;
 
-if (!$conn) {
-    die("Koneksi ke database gagal: " . mysqli_connect_error());
+if (!$koneksi) {
+    die("Koneksi gagal: " . mysqli_connect_error());
 }
 ?>
