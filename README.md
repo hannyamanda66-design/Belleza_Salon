@@ -66,3 +66,11 @@ docker compose down -v     (stop containers and delete database data)
 - The `app` service only starts after `db` reports a healthy status (healthcheck).
 - MySQL data is stored in the `db-data` volume, so it is not lost when containers restart.
 - The `lower_case_table_names=1` option is used because MySQL on Linux treats table names as case-sensitive.
+
+- ## Project Structure
+- `Dockerfile`: php:8.2-apache image with the mysqli extension
+- `compose.yaml`: `app` (web) and `db` (MySQL 8.0) services
+- `.env.example`: sample environment variables
+- `.dockerignore`: files excluded from the image
+- `db/belleza_salon.sql`: initial data, imported automatically when the volume is first created
+- `koneksi.php`: database connection, reads environment variables
